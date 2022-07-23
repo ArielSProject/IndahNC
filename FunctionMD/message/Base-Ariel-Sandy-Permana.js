@@ -2067,7 +2067,7 @@ if (!isOwner) return reply('khusus owner')
 if (args.length < 1) return reply(`Masukkan isi pesannya`)
 const bc = store.chats.all()
 for (let i of bc) {
-sock.sendMessage(i.id, { text: `*[ BROADCAST ]*\n${q}\n\n⫹⫺ 𝗗𝗮𝘁𝗲 : ${time}` })
+sock.sendMessage(i.id, { text: `*[ BROADCAST ]*\n\n${q}\n\n⫹⫺ 𝗗𝗮𝘁𝗲 : ${time}` })
 }
 break
 case 'couple': {
