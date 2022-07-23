@@ -3656,34 +3656,33 @@ case 'apakah':
 if (args.length < 1) return m.reply(from, `Contoh : ${prefix+order} Saya Gay?`, { quoted : m } )
 const apa = ['Iya', 'Tidak', 'Bisa Jadi', 'Betul','Mungkin Iya','YNTKTS']
 const kah = apa[Math.floor(Math.random() * apa.length)]
-sock.sendMessage(from, { text: `Pertanyaan : Apakah ${q}\nJawaban : ${kah}` }, { quoted: m })
+sock.sendMessage(from, { text: `Pertanyaan : Apakah ${q}\n\nJawaban : ${kah}` }, { quoted: m })
 break
 case 'bisakah':
 if (args.length < 1) return m.reply(from, `Contoh : ${prefix+order} Saya Berhenti Coli?`, { quoted : m } )
 const bisa = ['Bisa','Gak Bisa','Gak Bisa Ajg Aaokawpk','TENTU PASTI KAMU BISA!!!!','Gak bisa lahh tolol aowkwowk']
 const ga = bisa[Math.floor(Math.random() * bisa.length)]
-sock.sendMessage(from, { text: `Pertanyaan : ${q}\nJawaban : ${ga}` }, { quoted: m })
-
+sock.sendMessage(from, { text: `Pertanyaan : ${q}\n\nJawaban : ${ga}` }, { quoted: m })
 break
 case 'bagaimanakah':
 if (args.length < 1) return m.reply(from, `Contoh : ${prefix+order} Menjadi Wibu`, { quoted : m } )
 const gimana = ['Gak Gimana2', 'Sulit Itu Bro', 'Maaf Bot Tidak Bisa Menjawab', 'Coba Deh Cari Di Gugel','astaghfirallah Beneran???','Pusing ah','Owhh Begitu:(','Yang Sabar Ya Bos:(','Gimana yeee']
 const ya = gimana[Math.floor(Math.random() * gimana.length)]
-sock.sendMessage(from, { text: `Pertanyaan : ${q}\nJawaban : ${ya}` }, { quoted: m })
+sock.sendMessage(from, { text: `Pertanyaan : ${q}\n\nJawaban : ${ya}` }, { quoted: m })
 break
 case 'gantengcek':
 case 'cekganteng':
 if (args.length < 1) return m.reply(from, `Contoh : ${prefix+order} Ariel SP`, { quoted : m } )
 const gan = ['5', '10', '15' ,'20', '25','30','35','40','45','50','55','60','65','70','75','80','85','90','100']
 const teng = gan[Math.floor(Math.random() * gan.length)]
-sock.sendMessage(from, { text: `Nama : ${q}\nJawaban : *${teng}%*` }, { quoted: m })
+sock.sendMessage(from, { text: `Nama : ${q}\n\nJawaban : *${teng}%*` }, { quoted: m })
 break
 case 'cantikcek':
   case 'cekcantik':
 if (args.length < 1) return m.reply(from, `Contoh : ${prefix+order} Nama Cewe`, { quoted : m } )
 	const can = ['5', '10', '15' ,'20', '25','30','35','40','45','50','55','60','65','70','75','80','85','90','100']
 const tik = can[Math.floor(Math.random() * can.length)]
-sock.sendMessage(from, { text: `Nama : ${q}\nJawaban : *${tik}%*` }, { quoted: m })
+sock.sendMessage(from, { text: `Nama : ${q}\n\nJawaban : *${tik}%*` }, { quoted: m })
 break
 case 'sangecek':
   case 'ceksange':
@@ -3694,25 +3693,25 @@ case 'sangecek':
 				if (args.length < 1) return m.reply(from, `Contoh : ${prefix+order} Nama Lu`, { quoted : m } )
 const sangeh = ['5', '10', '15','20', '25','30','35','40','45','50','55','60','65','70','75','80','85','90','100']
 const sange = sangeh[Math.floor(Math.random() * sangeh.length)]
-sock.sendMessage(from, { text: `Nama : ${q}\nJawaban : *${sange}%*` }, { quoted: m })
+sock.sendMessage(from, { text: `Nama : ${q}\n\nJawaban : *${sange}%*` }, { quoted: m })
 break
 case 'kapankah':
 				if (args.length < 1) return m.reply(from, `Contoh : ${prefix+order} Saya Mati`, { quoted : m } )
 const kapan = ['5 Hari Lagi', '10 Hari Lagi', '15 Hari Lagi','20 Hari Lagi', '25 Hari Lagi','30 Hari Lagi','35 Hari Lagi','40 Hari Lagi','45 Hari Lagi','50 Hari Lagi','55 Hari Lagi','60 Hari Lagi','65 Hari Lagi','70 Hari Lagi','75 Hari Lagi','80 Hari Lagi','85 Hari Lagi','90 Hari Lagi','100 Hari Lagi','5 Bulan Lagi', '10 Bulan Lagi', '15 Bulan Lagi','20 Bulan Lagi', '25 Bulan Lagi','30 Bulan Lagi','35 Bulan Lagi','40 Bulan Lagi','45 Bulan Lagi','50 Bulan Lagi','55 Bulan Lagi','60 Bulan Lagi','65 Bulan Lagi','70 Bulan Lagi','75 Bulan Lagi','80 Bulan Lagi','85 Bulan Lagi','90 Bulan Lagi','100 Bulan Lagi','1 Tahun Lagi','2 Tahun Lagi','3 Tahun Lagi','4 Tahun Lagi','5 Tahun Lagi','Besok','Lusa',`Abis Command Ini Juga Lu ${q}`]
 const kapankah = kapan[Math.floor(Math.random() * kapan.length)]
-sock.sendMessage(from, { text: `Pertanyaan : ${q}\nJawaban : *${kapankah}*` }, { quoted: m })
+sock.sendMessage(from, { text: `Pertanyaan : ${q}\n\nJawaban : *${kapankah}*` }, { quoted: m })
 break
 case 'cekmati':
               if (args.length < 1) return m.reply(from, `Contoh : ${prefix+order} Nama Lu`, { quoted : m } )
               const ajall = ['5', '10', '15','20', '25','30','2','6','17','8','55','1','4','70','75','80','85','90','100']
               const ajal = ajall[Math.floor(Math.random() * ajall.length)]
-              sock.sendMessage(from, { text: `Nama : ${q}\nJawaban : *${ajal} Tahun lagi*\n*Tobat Bro Ajal Gada Yang Tau, Kalo Jumpscare Dan Lu Tiba² Mati Kan Ga Lucu*` }, { quoted: m })
+              sock.sendMessage(from, { text: `Nama : ${q}\n\nJawaban : *${ajal} Tahun lagi*\n\n*Tobat Bro Ajal Gada Yang Tau, Kalo Jumpscare Dan Lu Tiba² Mati Kan Ga Lucu*` }, { quoted: m })
               break
 case 'jadian':
               if (args.length < 1) return m.reply(from, `Contoh : ${prefix+order} Nama Cowo & Nama Cewe`, { quoted : m } )
               const jadiannn = ['Cie Yang Jadian, Selamat Ya Semoga Langgeng, Jangan Lupa Traktir Kita Bakso', 'Cie Yang Jadian, Selamat Ya Semoga Langgeng, Jangan Lupa Traktir Kita Martabak Di Gofood']
               const jadiann = jadiannn[Math.floor(Math.random() * jadiannn.length)]
-              sock.sendMessage(from, { text: `Pasangan : ${q}\nTanggal : ${time}\n*${jadiann}*` }, { quoted: m })
+              sock.sendMessage(from, { text: `Pasangan : ${q}\n\nTanggal : ${time}\n\n*${jadiann}*` }, { quoted: m })
               break
 
   case 'sticker': case 'stiker': case 's': case 'stickergif': case 'sgif': case 'stikergif': case 'stikgif':{			   			   
