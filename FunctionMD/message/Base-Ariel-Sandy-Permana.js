@@ -875,7 +875,7 @@ reply("Jawaban Salah Kak!")
 
        } 
          if (isAntiWaMe) 
-if (chatmessage.includes('wa.me/','http://wa.me/')) {
+if (chatmessage.includes('wa.me/','http://wa.me/','https://wa.me/')) {
                if (!m.key.fromMe) {
    if (isGroupAdmins) return reply('Untung Admin') 
                reply(` *「 ANTI WA ME NUMBER 」*\nKamu mengirimkan Nomor yang tidak dikenali, maaf kamu di kick dari grup`)
@@ -956,7 +956,7 @@ sock.groupRemove(from, [kic]).catch((e) => { reply(`BOT HARUS JADI ADMIN`) })
 }
 //══════════[ Antiwame ]══════════//
 
-if (chatmessage.includes("wa.me/","http://wa.me/")) {
+if (chatmessage.includes("wa.me/","http://wa.me/","https://wa.me/")) {
 if (!isGroup) return
 if (!isAntiWaMe) return
 if (isGroupAdmins) return
@@ -2067,7 +2067,7 @@ if (!isOwner) return reply('khusus owner')
 if (args.length < 1) return reply(`Masukkan isi pesannya`)
 const bc = store.chats.all()
 for (let i of bc) {
-sock.sendMessage(i.id, { text: `*[ BROADCAST ]*\n\n${q}\n\n⫹⫺ 𝗗𝗮𝘁𝗲 : ${time}` })
+sock.sendMessage(i.id, { text: `*「 BROADCAST 」*\n\n${q}\n\n⫹⫺ 𝗗𝗮𝘁𝗲 : ${time}` })
 }
 break
 case 'couple': {
