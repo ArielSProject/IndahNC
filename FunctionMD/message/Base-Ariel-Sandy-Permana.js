@@ -86,6 +86,7 @@ const ph = require('../scrape/photooxy.js')
  const { wikiSearch } = require('../scrape/wiki.js');
  const { TiktokDownloader } = require('../scrape/tiktokdl') 
  const _antilink = JSON.parse(fs.readFileSync('./Ariel-SP_Ganteng/antilink.json'))
+ const _antiwame = JSON.parse(fs.readFileSync('./Ariel-SP_Ganteng/antiwame.json'))
  const Options = require('../settings/options.js')
  const afk = require("../../storage/user/afk.js");
  let _afk = JSON.parse(fs.readFileSync('./storage/user/afk.json'));
@@ -158,6 +159,7 @@ module.exports = async (
    const groupMetdata = isGroup ? await sock.groupMetadata(from) : ''
    const groupName = isGroup ? await groupMetdata.subject : ''   
    const isAntiLink = isGroup ? _antilink.includes(from) : false
+   const isAntiWaMe = isGroup ? _antiwame.includes(from) : false
    const groupMetadata = isGroup ? await sock.groupMetadata(from) : ''
    const groupMembers = isGroup ? groupMetadata.participants : ''
    const groupAdmins = isGroup ? m.getGroupAdmins(groupMembers) : ''
@@ -228,6 +230,7 @@ const MenuList = `✘ *I N F O - B O T*
 ⌕ ${prefix}linkgc
 ⌕ ${prefix}delete
 ⌕ ${prefix}antilink on/off
+⌕ ${prefix}antiwame on/off
 
 ✘ *D O W N L O A D - M E N U*
 
@@ -780,7 +783,7 @@ if (!isInventoryMonay){ addInventoriMonay(m.sender) }
 if (chatmessage.toLowerCase() == jawaban) {
 addMonay(_tebakanime[m.sender.split('@')[0]].user, _tebakanime[m.sender.split('@')[0]].monay)
 const sections = [ { title: "Game", rows: [ { title: "Kuis Math", rowId: "#inikuis", description: "Kuis Matematika"},{title: "Tebak Gambar", rowId: "#tebakgambar", description: "Game Tebak Gambar"},{title: "Tebak Kimia", rowId: "#tebakkimia", description: "Game Tebak Kimia"},{title: "Asah Otak", rowId: "#asahotak", description: "Game Asahotak"}, {title: "Susun Kata", rowId: "#susunkata", description: "Game Susunkata"},{title: "Tebak Kalimat", rowId: "#tebakkalimat", description: "Game Tebak Kalimat"}, {title: "Teka Teki", rowId: "#tekateki", description: "Teka Teki"},{title: "Cak Lontong", rowId: "#caklontong", description: "Game Cak Lontong"}, { title: "Tebak Anime", rowId: "#tebakanime", description: "Game Tebak Anime"}, {title: "Tebak Kabupaten", rowId: "#tebakkabupaten", description: "Game Tebak Kabupaten"}, {title: "Tebak Bendera", rowId: "#tebakbendera", description: "Game Tebak Bendera"}, {title: "Tebak Lagu", rowId: "#tebaklagu", description: "Game Tebak Lagu"}, {title: "Tebak Lirik", rowId: "#tebaklirik", description: "Game Tebak Lirik"}, ]}    ]
-const listMessage = {text: `${Options.info.botName} Game`,footer: `Selamat jawaban kamu benar🥳🎉\n\n[🎁]Kamu mendapatkan hadiah sebanyak ${_tebakanime[m.sender.split('@')[0]].monay} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, title: "List Game",buttonText: "Play Again",sections
+const listMessage = {text: `${Options.info.botName} Game`,footer: `Selamat jawaban kamu benar🥳🎉\n\n[??]Kamu mendapatkan hadiah sebanyak ${_tebakanime[m.sender.split('@')[0]].monay} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, title: "List Game",buttonText: "Play Again",sections
    }
 const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
 delete _tebakanime[m.sender.split('@')[0]]
@@ -867,15 +870,25 @@ reply("Jawaban Salah Kak!")
        }    
     if (chatmessage.includes(`kontol`) || chatmessage.includes(`Bangsat`) || chatmessage.includes(`bangsat`) || chatmessage.includes(`Bacot`) || chatmessage.includes(`bacot`) || chatmessage.includes(`Kontol`)){
        sock.sendMessage(from, 
-        { text: 'JANGAN TOXIC KIDS' }, 
+        { text: 'JANGAN TOXIC !!' }, 
         { quoted : m })  
 
        } 
+         if (isAntiWaMe) 
+if (chatmessage.includes('wa.me/','http://wa.me/')) {
+               if (!m.key.fromMe) {
+   if (isGroupAdmins) return reply('Untung Admin') 
+               reply(` *「 ANTI WA ME NUMBER 」*\nKamu mengirimkan Nomor yang tidak dikenali, maaf kamu di kick dari grup`)
+             let number = m.sender
+               await sock.groupParticipantsUpdate(from, [number], 'remove')
+               }
+	  }
+	
          if (isAntiLink) 
 if (chatmessage.includes('https://chat.whatsapp.com')) {
                if (!m.key.fromMe) {
    if (isGroupAdmins) return reply('Untung Admin') 
-               reply('Antilink\nKamu akan di kick')
+               reply(` *「 GROUP LINK DETECTOR 」*\nKamu mengirimkan link grup chat, maaf kamu di kick dari grup`)
              let number = m.sender
                await sock.groupParticipantsUpdate(from, [number], 'remove')
                }
@@ -941,7 +954,18 @@ setTimeout(() => {
 sock.groupRemove(from, [kic]).catch((e) => { reply(`BOT HARUS JADI ADMIN`) })
 }, 0)
 }
+//══════════[ Antiwame ]══════════//
 
+if (chatmessage.includes("wa.me/","http://wa.me/")) {
+if (!isGroup) return
+if (!isAntiWaMe) return
+if (isGroupAdmins) return
+var kic = `${m.sender.split("@")[0]}@s.whatsapp.net`
+reply(` *「 ANTI WA ME NUMBER 」*\nKamu mengirimkan Nomor yang tidak dikenali, maaf kamu di kick dari grup`)
+setTimeout(() => {
+sock.groupRemove(from, [kic]).catch((e) => { reply(`BOT HARUS JADI ADMIN`) })
+}, 0)
+}
 
  switch (order) {
 case 'cariteman': 
@@ -2291,7 +2315,8 @@ break
 ⌕ ${prefix}listadmin
 ⌕ ${prefix}linkgc
 ⌕ ${prefix}delete
-⌕ ${prefix}antilink on/off`
+⌕ ${prefix}antilink on/off
+⌕ ${prefix}antiwame on/off`
 reply(arielapriyani)
 }
 break
@@ -2882,6 +2907,32 @@ if (!isAntiLink) return reply('Sudah Mati Kak')
 var ini = _antilink.indexOf(from)
 _antilink.splice(ini, 1)
 fs.writeFileSync('./Ariel-SP_Ganteng/antilink.json', JSON.stringify(_antilink))
+reply(`\`\`\`Sukses ✅, Menonaktifkan fitur antilink di group\`\`\` *${groupMetadata.subject}*`)
+} else if (args[0] === 'on'){
+anu =`Silahkan pilih salah satu\nUntuk fitur antilink`
+punten = [{buttonId: `${prefix}antilink on`, buttonText: {displayText: 'ON ✔️️'}, type: 1},{buttonId: `${prefix}antilink off`, buttonText: {displayText: 'OFF ❌️'}, type: 1}]
+const btngrass = {
+contentText: `${anu}`,
+footerText: `Hayyuk`,
+buttons: punten,
+headerType: 1
+}
+await sock.sendMessage(from, btngrass, MessageType.buttonsMessage, {quoted: m})
+}
+break
+case 'antiwame': 
+if (!isGroup) return reply('*Khusus Grup*')
+if (!isGroupAdmins && !isOwner) return reply('*Khusus Owner*')
+if (args[0] === 'on') {
+if (isAntiWaMe) return reply('Sudah Aktif Kak')
+_antiwame.push(from)
+fs.writeFileSync('./Ariel-SP_Ganteng/antiwame.json', JSON.stringify(_antiwame))
+reply(`\`\`\`Sukses ✅, Mengaktifkan fitur antiwame di group\`\`\` *${groupMetadata.subject}*`)
+} else if (args[0] === 'off') {
+if (!isAntiWaMe) return reply('Sudah Mati Kak')
+var ini = _antiwame.indexOf(from)
+_antiwame.splice(ini, 1)
+fs.writeFileSync('./Ariel-SP_Ganteng/antiwame.json', JSON.stringify(_antiwame))
 reply(`\`\`\`Sukses ✅, Menonaktifkan fitur antilink di group\`\`\` *${groupMetadata.subject}*`)
 } else if (args[0] === 'on'){
 anu =`Silahkan pilih salah satu\nUntuk fitur antilink`
