@@ -5,7 +5,7 @@
  monayawal: 1000,
  limitawal: 15,
  info: {
-   owner: ["6285321822875@s.whatsapp.net","6282118022072@s.whatsapp.net","12087630151@s.whatsapp.net"], //Yang Awal Nomor Bot Yang Kedua Nomor Lu
+   owner: ["6285321822875@s.whatsapp.net","12087630151@s.whatsapp.net"], //Yang Awal Nomor Bot Yang Kedua Nomor Lu
    arielspkece: ["12087630151"], //Nomor Lu
    ownerName: "Ariel SP", //Nama Lu
    wmAriel: "12087630151", //Nomor Lu
