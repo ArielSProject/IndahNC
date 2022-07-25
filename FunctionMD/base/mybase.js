@@ -122,13 +122,13 @@
   const times = moment().tz('Asia/Jakarta').format('HH:mm:ss')
   if(times < "23:59:00"){
     m.sayingtime         = 'Selamat Malam'
-    m.timoji = '🌕'}
+    m.timoji = '🌚'}
   if(times < "19:00:00"){
     m.sayingtime         = 'Selamat Sore'
-    m.timoji = '🌆'}
+    m.timoji = '🌇'}
   if(times < "18:00:00"){
     m.sayingtime         = 'Selamat Sore'
-    m.timoji = '🌆'}
+    m.timoji = '🌇'}
   if(times < "15:00:00"){
     m.sayingtime         = 'Selamat Siang'
     m.timoji = '🌤️'}
@@ -137,7 +137,7 @@
     m.timoji = '🌅'}
   if(times < "05:00:00"){
     m.sayingtime         = 'Selamat Malam'
-    m.timoji = '🌕' }  
+    m.timoji = '🌚' }  
 
     m.tanggal10 = new Date('1 May 2022 00:00:00').getTime();
     m.sekarang1 = new Date().getTime();
